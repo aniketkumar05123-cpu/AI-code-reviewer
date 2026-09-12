@@ -17,6 +17,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+console.log("MONGO_URI: loaded :", !! process.env.MONGO_URI);
+console.log("MONGO_URI starts with: ", process.env.MONGO_URI ? process.env.MONGO_URI?.split("://")[0] : "Not loaded");
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log('MongoDB Connection error', err));
